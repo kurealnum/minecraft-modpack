@@ -1,0 +1,29 @@
+services:
+    mc:
+      image: itzg/minecraft-server
+      environment:
+        EULA: true
+        MEMORY: 8G
+          # ENABLE_AUTOPAUSE: true
+          # AUTOPAUSE_TIMEOUT_EST: 60
+          # AUTOPAUSE_TIMEOUT_INIT: 60
+          # MAX_TICK_TIME: -1
+        TYPE: forge
+        DEBUG: true
+        CF_API_KEY: ${CF_API_KEY}
+        CF_EXCLUDE_MODS: |
+          audio-extension-for-fancymenu-forge
+        CF_FORCE_SYNCHRONIZE: true
+        CURSEFORGE_FILES: |
+          immersive-aircraft         
+        VERSION: 1.20.1
+      volumes:
+        - ./data:/data
+      ports:
+        - "25565:25565"
+      tty: true
+      stdin_open: true
+
+volumes:
+  data: {}
+
